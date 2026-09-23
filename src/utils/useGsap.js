@@ -3,10 +3,14 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Register GSAP ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-export function useGsapAnimations() {
+export function useGsapAnimations(currentPage) {
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Use gsap.context for clean lifecycle management & performance
     const ctx = gsap.context(() => {
       // 1. Reading Progress Bar at the top of the viewport
@@ -17,79 +21,69 @@ export function useGsapAnimations() {
           transformOrigin: 'left center',
           ease: 'none',
           scrollTrigger: {
-            trigger: 'body',
+            trigger: document.body,
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.2,
+            scrub: 0.15,
           },
         });
       }
 
-      // 2. High-Performance Batch Reveal for Section Headings
-      ScrollTrigger.batch('section h1, section h2', {
-        start: 'top 88%',
-        once: true,
-        onEnter: (batch) => {
+      // 2. High-Performance Gentle Reveal for Section Headings
+      const headings = document.querySelectorAll('main section h1, main section h2');
+      if (headings.length > 0) {
+        headings.forEach((heading) => {
           gsap.fromTo(
-            batch,
-            { autoAlpha: 0, y: 28 },
+            heading,
+            { opacity: 0.85, y: 16 },
             {
-              autoAlpha: 1,
+              opacity: 1,
               y: 0,
-              duration: 0.7,
-              stagger: 0.1,
+              duration: 0.5,
               ease: 'power2.out',
-              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: heading,
+                start: 'top 92%',
+                once: true,
+              },
             }
           );
-        },
-      });
+        });
+      }
 
-      // 3. High-Performance Batch Reveal for Cards (staggered group entry)
-      ScrollTrigger.batch('.group, section .rounded-2xl, section .rounded-3xl', {
-        start: 'top 85%',
-        once: true,
-        onEnter: (batch) => {
-          gsap.fromTo(
-            batch,
-            { autoAlpha: 0, y: 32 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.6,
-              stagger: 0.07,
-              ease: 'power2.out',
-              overwrite: 'auto',
-              clearProps: 'transform',
-            }
-          );
-        },
-      });
-
-      // 4. Lightweight Parallax for Hero & Background Graphics
-      const parallaxBgs = document.querySelectorAll('.absolute.inset-0.bg-cover');
-      parallaxBgs.forEach((bg) => {
-        gsap.to(bg, {
-          y: 20,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: bg.parentElement,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
+      // 3. Staggered card reveals on scroll
+      const cards = document.querySelectorAll('main section .grid > div, main section .grid > a');
+      if (cards.length > 0) {
+        ScrollTrigger.batch(cards, {
+          start: 'top 90%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.fromTo(
+              batch,
+              { opacity: 0.8, y: 20 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: 'power2.out',
+                clearProps: 'transform,opacity',
+              }
+            );
           },
         });
-      });
+      }
     });
 
-    // Refresh ScrollTrigger once DOM layout stabilizes
-    const timeout = setTimeout(() => {
+    // Refresh ScrollTrigger once DOM layout stabilizes after page transition
+    const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 250);
+    }, 100);
 
     return () => {
-      clearTimeout(timeout);
-      ctx.revert(); // cleanly garbage-collects all animations & triggers
+      clearTimeout(timer);
+      ctx.revert(); // cleanly cleans up triggers for previous page
     };
-  }, []);
+  }, [currentPage]);
 }
+

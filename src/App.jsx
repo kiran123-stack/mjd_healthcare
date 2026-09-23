@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TheChallenge from "./components/TheChallenge";
@@ -12,8 +12,23 @@ import FinalCTA from "./components/FinalCTA";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import AssessmentModal from "./components/AssessmentModal";
 import Footer from "./components/Footer";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import ContactPage from "./pages/ContactPage";
+import MarketAccessPage from "./pages/MarketAccessPage";
+import GTMStrategyPage from "./pages/GTMStrategyPage";
+import PhygitalGrowthPage from "./pages/PhygitalGrowthPage";
+import GrowthEnginePage from "./pages/GrowthEnginePage";
+import BusinessDevelopmentPage from "./pages/BusinessDevelopmentPage";
+import DigitalDemandPage from "./pages/DigitalDemandPage";
+import SalesEnablementPage from "./pages/SalesEnablementPage";
+import ProductPositioningPage from "./pages/ProductPositioningPage";
+import ChannelDevelopmentPage from "./pages/ChannelDevelopmentPage";
+import IndustriesPage from "./pages/IndustriesPage";
 import { ModalProvider, useModal } from "./context/ModalContext";
 import { useGsapAnimations } from "./utils/useGsap";
+import { useSEO } from "./utils/seoManager";
+import { useStructuredData } from "./utils/schemaManager";
 
 const faqs = [
   { q: "How is MJD Healthcare different from a traditional healthcare marketing agency?", a: "Most marketing agencies focus on brand awareness, vanity digital metrics, and social reach. MJD Healthcare is a commercialization advisory and market access practice. We focus on hospital procurement clearance, institutional sales pipelines, clinical buyer validation, and formulary committee adoption. We measure success by commercial traction and contract value." },
@@ -49,8 +64,69 @@ function MainContent() {
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
   const { openModal } = useModal();
   
-  // Initialize GSAP micro-animations
-  useGsapAnimations();
+  const getPageFromLocation = () => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase().replace('#', '');
+      const path = window.location.pathname.toLowerCase().replace('/', '');
+      const pageKey = hash || path;
+
+      if (['contact'].includes(pageKey)) return 'contact';
+      if (['services'].includes(pageKey)) return 'services';
+      if (['about', 'about-us'].includes(pageKey)) return 'about';
+      if (['market-access'].includes(pageKey)) return 'market-access';
+      if (['go-to-market-strategy', 'gtm'].includes(pageKey)) return 'go-to-market-strategy';
+      if (['phygital-healthcare-growth', 'phygital'].includes(pageKey)) return 'phygital-healthcare-growth';
+      if (['healthcare-growth-engine', 'growth-engine'].includes(pageKey)) return 'healthcare-growth-engine';
+      if (['healthcare-business-development', 'business-development', 'bd'].includes(pageKey)) return 'healthcare-business-development';
+      if (['healthcare-digital-demand-generation', 'digital-demand'].includes(pageKey)) return 'healthcare-digital-demand-generation';
+      if (['sales-enablement'].includes(pageKey)) return 'sales-enablement';
+      if (['product-positioning-commercialization', 'product-positioning'].includes(pageKey)) return 'product-positioning-commercialization';
+      if (['channel-distributor-development', 'channel-development'].includes(pageKey)) return 'channel-distributor-development';
+      if (['industries'].includes(pageKey)) return 'industries';
+    }
+    return 'home';
+  };
+
+  const [currentPage, setCurrentPage] = useState(getPageFromLocation);
+
+  useEffect(() => {
+    const onHashOrPop = () => {
+      setCurrentPage(getPageFromLocation());
+    };
+    window.addEventListener('popstate', onHashOrPop);
+    window.addEventListener('hashchange', onHashOrPop);
+    return () => {
+      window.removeEventListener('popstate', onHashOrPop);
+      window.removeEventListener('hashchange', onHashOrPop);
+    };
+  }, []);
+
+  const handleNavigate = (page, targetAnchor) => {
+    setCurrentPage(page);
+    if (page !== 'home') {
+      window.history.pushState(null, '', `#${page}`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.history.pushState(null, '', targetAnchor || '#');
+      if (targetAnchor) {
+        setTimeout(() => {
+          const el = document.querySelector(targetAnchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Initialize GSAP micro-animations with currentPage dependency
+  useGsapAnimations(currentPage);
+
+  // ── SEO: Update <title>, <meta>, canonical, Open Graph on every page change
+  useSEO(currentPage);
+
+  // ── AEO + GEO: Inject JSON-LD structured data schemas on every page change
+  useStructuredData(currentPage);
 
   return (
     <div style={{fontFamily:'Manrope,sans-serif',background:'#F8FAFC',color:'#16324F',overflowX:'hidden'}}>
@@ -60,35 +136,89 @@ function MainContent() {
         className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-[#007BFF] via-[#00D2FF] to-[#10B981] z-[100] origin-left scale-x-0"
       />
 
-      <Header />
-      <main style={{paddingTop:80}}>
+      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      
+      {currentPage === 'contact' ? (
+        <main style={{paddingTop:80}}>
+          <ContactPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'services' ? (
+        <main style={{paddingTop:80}}>
+          <ServicesPage />
+        </main>
+      ) : currentPage === 'about' ? (
+        <main style={{paddingTop:80}}>
+          <AboutPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'market-access' ? (
+        <main style={{paddingTop:80}}>
+          <MarketAccessPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'go-to-market-strategy' ? (
+        <main style={{paddingTop:80}}>
+          <GTMStrategyPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'phygital-healthcare-growth' ? (
+        <main style={{paddingTop:80}}>
+          <PhygitalGrowthPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'healthcare-growth-engine' ? (
+        <main style={{paddingTop:80}}>
+          <GrowthEnginePage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'healthcare-business-development' ? (
+        <main style={{paddingTop:80}}>
+          <BusinessDevelopmentPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'healthcare-digital-demand-generation' ? (
+        <main style={{paddingTop:80}}>
+          <DigitalDemandPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'sales-enablement' ? (
+        <main style={{paddingTop:80}}>
+          <SalesEnablementPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'product-positioning-commercialization' ? (
+        <main style={{paddingTop:80}}>
+          <ProductPositioningPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'channel-distributor-development' ? (
+        <main style={{paddingTop:80}}>
+          <ChannelDevelopmentPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : currentPage === 'industries' ? (
+        <main style={{paddingTop:80}}>
+          <IndustriesPage onNavigateHome={() => handleNavigate('home', null)} />
+        </main>
+      ) : (
+        <main style={{paddingTop:80}}>
 
-        {/* ── SECTION 01 HERO (Exact replica of user design) ── */}
+        {/* ── SECTION 01 HERO ── */}
         <div id="hero" className="scroll-mt-24">
           <Hero />
         </div>
 
-        {/* ── SECTION 02 THE CHALLENGE (Exact replica of user design) ── */}
+        {/* ── SECTION 02 THE CHALLENGE ── */}
         <div id="approach" className="scroll-mt-24">
           <TheChallenge />
         </div>
 
-        {/* ── SECTION 03 THE DIFFERENTIATOR (Exact replica of user design) ── */}
+        {/* ── SECTION 03 THE DIFFERENTIATOR ── */}
         <TheDifferentiator />
 
-        {/* ── SECTION 04 GROWTH ENGINE (Exact replica of user design) ── */}
+        {/* ── SECTION 04 GROWTH ENGINE ── */}
         <GrowthEngine />
 
-        {/* ── SECTION 05 PHYGITAL MODEL (Exact replica of user design) ── */}
+        {/* ── SECTION 05 PHYGITAL MODEL ── */}
         <PhygitalModel />
 
-        {/* ── SECTION 06 SOLUTIONS (Exact replica of user design) ── */}
+        {/* ── SECTION 06 SOLUTIONS ── */}
         <Solutions />
 
-        {/* ── SECTION 07 WHO WE HELP (Exact attractive card redesign) ── */}
+        {/* ── SECTION 07 WHO WE HELP ── */}
         <WhoWeHelp />
 
-        {/* ── SECTION 08 MARKET ACCESS EXPLAINER (Exact replica of user design) ── */}
+        {/* ── SECTION 08 MARKET ACCESS EXPLAINER ── */}
         <MarketAccessExplainer />
 
         {/* ── SECTION 09 WHY MJD ── */}
@@ -286,11 +416,12 @@ function MainContent() {
           </div>
         </section>
 
-        {/* ── SECTION 14 FINAL CTA (Exact replica of user design) ── */}
+        {/* ── SECTION 14 FINAL CTA ── */}
         <FinalCTA />
       </main>
+      )}
 
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
       <WhatsAppWidget />
       <AssessmentModal />
     </div>

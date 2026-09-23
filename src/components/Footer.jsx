@@ -1,69 +1,184 @@
 import React from 'react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const handleLinkClick = (e, page, anchor) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(page, anchor);
+    }
+  };
+
   return (
     <footer className="w-full bg-[#16324F] text-white border-t border-white/10 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/10">
 
-          {/* Brand Column */}
+          {/* Brand & Address Column */}
           <div className="md:col-span-4 space-y-4">
-            <img
-              src="/logo-removebg-preview.png"
-              alt="MJD Healthcare"
-              className="h-16 sm:h-20 w-auto brightness-0 invert opacity-95 transition-transform hover:scale-105"
-            />
-            <p className="text-sm font-medium text-white/70 max-w-sm leading-relaxed">
-              Healthcare Growth & Market Access Consultancy. Helping healthcare businesses turn market opportunities into commercial growth through structured regulatory, pricing, and adoption pathways.
+            <a 
+              href="/" 
+              onClick={(e) => handleLinkClick(e, 'home', null)}
+              className="inline-block cursor-pointer"
+            >
+              <img
+                src="/logo-removebg-preview.png"
+                alt="MJD Healthcare"
+                className="h-16 sm:h-20 w-auto brightness-0 invert opacity-95 transition-transform hover:scale-105"
+              />
+            </a>
+            <p className="text-xs sm:text-sm font-medium text-white/70 max-w-sm leading-relaxed">
+              Healthcare Growth &amp; Market Access Consultancy. Helping healthcare businesses turn market opportunities into commercial growth through structured regulatory, pricing, and adoption pathways.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-xs font-semibold text-[#38BDF8] uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-              Global Advisory Active
+
+            {/* Exact User Provided Contact Info */}
+            <div className="space-y-1.5 pt-2 text-xs font-semibold text-white/80 border-t border-white/10">
+              <p><span className="text-[#38BDF8] font-bold">ADDRESS:</span> 808B DLF PRIME TOWER, POCKET-F, OKHLA PHASE 1, NEW DELHI 110020</p>
+              <p><span className="text-[#38BDF8] font-bold">CONTACT:</span> <a href="tel:+919794631500" className="hover:text-[#38BDF8] transition-colors">+91 97946 31500</a></p>
+              <p><span className="text-[#38BDF8] font-bold">MAIL US:</span> <a href="mailto:INFO@MJDHEALTHCARE.IN" className="hover:text-[#38BDF8] transition-colors">INFO@MJDHEALTHCARE.IN</a></p>
+            </div>
+
+            {/* Social Network Section — Exact Links & Icons as used in ContactPage */}
+            <div className="pt-3 border-t border-white/10 space-y-2.5">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#38BDF8]">
+                <span className="material-symbols-outlined text-[18px]">share</span>
+                <span>SOCIAL NETWORK</span>
+              </div>
+
+              <div className="flex items-center gap-3 pt-0.5">
+                {[
+                  { 
+                    key: 'linkedin', 
+                    label: 'LinkedIn', 
+                    url: 'https://www.linkedin.com/company/mjdhealthcare/?originalSubdomain=in', 
+                    bgClass: 'bg-[#F1F5F9] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white',
+                    icon: (
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    key: 'youtube', 
+                    label: 'YouTube', 
+                    url: 'https://www.youtube.com/@MJDHealthcare', 
+                    bgClass: 'bg-[#FF0000] text-white hover:bg-[#CC0000]',
+                    icon: (
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    key: 'instagram', 
+                    label: 'Instagram', 
+                    url: 'https://www.instagram.com/mjdhealthcare/', 
+                    bgClass: 'bg-[#F1F5F9] text-[#16324F] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white',
+                    icon: (
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    key: 'facebook', 
+                    label: 'Facebook', 
+                    url: 'https://www.facebook.com/people/Mjd-Healthcare-1/61592106786872/#', 
+                    bgClass: 'bg-[#F1F5F9] text-[#1877F2] hover:bg-[#1877F2] hover:text-white',
+                    icon: (
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                      </svg>
+                    )
+                  }
+                ].map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 ${s.bgClass}`}
+                    title={s.label}
+                    aria-label={s.label}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Consulting Practices</h4>
-            <ul className="space-y-2 text-sm font-medium text-white/65">
-              {['Market Entry & Access','Commercial Strategy','Payer & HTA Navigation','Value Dossier Framing'].map(l => (
-                <li key={l}><a href="#solutions" className="hover:text-[#38BDF8] transition-colors">{l}</a></li>
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Specialized Services</h4>
+            <ul className="space-y-2 text-xs sm:text-sm font-medium text-white/70">
+              {[
+                { l: 'Market Access', p: 'market-access' },
+                { l: 'GTM Strategy', p: 'go-to-market-strategy' },
+                { l: 'Phygital Growth', p: 'phygital-healthcare-growth' },
+                { l: 'Growth Engine', p: 'healthcare-growth-engine' },
+                { l: 'Business Development', p: 'healthcare-business-development' },
+                { l: 'Digital Demand Gen', p: 'healthcare-digital-demand-generation' },
+                { l: 'Sales Enablement', p: 'sales-enablement' },
+                { l: 'Product Positioning', p: 'product-positioning-commercialization' },
+                { l: 'Channel Development', p: 'channel-distributor-development' }
+              ].map(item => (
+                <li key={item.l}>
+                  <a href={`#${item.p}`} onClick={(e) => handleLinkClick(e, item.p, null)} className="hover:text-[#38BDF8] transition-colors cursor-pointer">
+                    {item.l}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
 
           <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Ecosystem & Access</h4>
-            <ul className="space-y-2 text-sm font-medium text-white/65">
-              {['Biopharma Ventures','MedTech Innovators','Digital Health Platforms','Growth Acceleration'].map(l => (
-                <li key={l}><a href="#who-we-help" className="hover:text-[#38BDF8] transition-colors">{l}</a></li>
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Industries We Serve</h4>
+            <ul className="space-y-2 text-xs sm:text-sm font-medium text-white/70">
+              {[
+                { l: 'Medical Devices', p: 'industries' },
+                { l: 'MedTech & AI', p: 'industries' },
+                { l: 'Pharmaceuticals', p: 'industries' },
+                { l: 'Healthcare Startups', p: 'industries' },
+                { l: 'Diagnostics & Labs', p: 'industries' },
+                { l: 'Hospitals & Chains', p: 'industries' }
+              ].map(item => (
+                <li key={item.l}>
+                  <a href="#industries" onClick={(e) => handleLinkClick(e, 'industries', null)} className="hover:text-[#38BDF8] transition-colors cursor-pointer">
+                    {item.l}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
 
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Strategic Intelligence</h4>
-            <ul className="space-y-2 text-sm font-medium text-white/65">
-              {['Access Dossiers','Regulatory Shifts','Pricing Benchmarks','Market Playbooks'].map(l => (
-                <li key={l}><a href="#insights" className="hover:text-[#38BDF8] transition-colors">{l}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Firm</h4>
-            <ul className="space-y-2 text-sm font-medium text-white/65">
-              {['Partners & Leadership','Our Methodology','Advisory Assessment','Global Offices'].map(l => (
-                <li key={l}><a href="#about" className="hover:text-[#38BDF8] transition-colors">{l}</a></li>
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#38BDF8]">Navigation &amp; Firm</h4>
+            <ul className="space-y-2 text-xs sm:text-sm font-medium text-white/70">
+              {[
+                { l: 'Home', p: 'home', a: null },
+                { l: 'About MJD Healthcare', p: 'about', a: null },
+                { l: 'Services Overview', p: 'services', a: null },
+                { l: 'Industries Overview', p: 'industries', a: null },
+                { l: 'Contact Us', p: 'contact', a: null }
+              ].map(item => (
+                <li key={item.l}>
+                  <a 
+                    href={`#${item.p}`} 
+                    onClick={(e) => handleLinkClick(e, item.p, item.a)} 
+                    className="hover:text-[#38BDF8] transition-colors cursor-pointer"
+                  >
+                    {item.l}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-semibold text-white/40">
-          <div>© 2025 MJD Healthcare Advisory Partners. All rights reserved.</div>
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-semibold text-white/50">
+          <div>Copyright © 2026 mjdhealthcare.in | Powered by mjdhealthcare.in</div>
           <div className="flex flex-wrap items-center gap-5">
-            {['Regulatory Disclaimers','Privacy Architecture','Terms of Engagement','Conflict of Interest Policy'].map(l => (
-              <a key={l} href="#" className="hover:text-[#38BDF8] transition-colors">{l}</a>
+            {['Privacy Policy', 'Terms of Service', 'Contact Us'].map(l => (
+              <a key={l} href="#contact" onClick={(e) => handleLinkClick(e, 'contact', null)} className="hover:text-[#38BDF8] transition-colors">{l}</a>
             ))}
           </div>
         </div>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- HOME -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ABOUT -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#about</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES OVERVIEW -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#services</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- INDUSTRIES WE SERVE -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#industries</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- CONTACT -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#contact</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- MARKET ACCESS -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#market-access</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- GO-TO-MARKET STRATEGY -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#go-to-market-strategy</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PHYGITAL HEALTHCARE GROWTH -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#phygital-healthcare-growth</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- HEALTHCARE GROWTH ENGINE -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#healthcare-growth-engine</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- HEALTHCARE BUSINESS DEVELOPMENT -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#healthcare-business-development</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- DIGITAL DEMAND GENERATION -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#healthcare-digital-demand-generation</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- SALES ENABLEMENT -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#sales-enablement</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PRODUCT POSITIONING & COMMERCIALIZATION -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#product-positioning-commercialization</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- CHANNEL & DISTRIBUTOR DEVELOPMENT -->
+  <url>
+    <loc>https://www.mjdhealthcare.in/#channel-distributor-development</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
