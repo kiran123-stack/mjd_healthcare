@@ -299,16 +299,17 @@ export default function MarketAccessExplainer() {
           </div>
 
           {/* Right: CTA Button */}
-          <button
-            type="button"
-            onClick={() => openModal('Market Access Explainer — Opportunity Assessment')}
+          <a
+            href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20assess%20our%20market%20access%20opportunity."
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-[#08121D]/92 border border-[#1E3A5F] hover:border-[#00D2FF] text-white text-xs sm:text-[13px] font-black uppercase tracking-wider shadow-xl transition-all group cursor-pointer"
           >
             <span>ASSESS MY MARKET ACCESS OPPORTUNITY</span>
             <div className="w-5 h-5 rounded-full bg-[#00D2FF] text-[#070D18] flex items-center justify-center group-hover:scale-110 transition-transform">
               <span className="material-symbols-outlined text-[14px] font-black">arrow_forward</span>
             </div>
-          </button>
+          </a>
 
         </div>
 

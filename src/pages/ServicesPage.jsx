@@ -124,14 +124,15 @@ export default function ServicesPage({ onNavigate }) {
                 >
                   <span>Explore Phygital Page →</span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => openModal('Phygital Growth Strategy Consultation')}
+                <a
+                  href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20am%20interested%20in%20the%20Phygital%20Growth%20Engine."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
                 >
                   <span>Talk to MJD</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
+                </a>
               </div>
             </div>
 

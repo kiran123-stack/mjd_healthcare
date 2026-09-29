@@ -542,14 +542,13 @@ export default function DigitalDemandPage({ onNavigateHome }) {
                 Drive qualified healthcare B2B demand across search, social, and AI channels.
               </p>
               <div className="pt-4">
-                <button
-                  type="button"
-                  onClick={() => openModal('Demand Page CTA')}
+                <a
+                  href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Digital%20Demand%20Generation%20Inquiry"
                   className="px-9 py-5 rounded-xl bg-[#007BFF] hover:bg-[#0056b3] text-white text-sm font-extrabold uppercase tracking-wider cursor-pointer inline-flex items-center gap-3 shadow-xl shadow-[#007BFF]/40 hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   <span>Talk to MJD Healthcare</span>
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

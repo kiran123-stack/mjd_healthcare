@@ -49,9 +49,28 @@ export default function ContactPage({ onNavigateHome }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.fullname || !formData.email) return;
+
+    const emailSubject = encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`);
+    const emailBody = encodeURIComponent(
+`Full Name: ${formData.fullname}
+Email: ${formData.email}
+Subject: ${formData.subject || 'N/A'}
+
+Message:
+${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}
+
+---
+Sent via MJD Healthcare Contact Portal`
+    );
+
+    // Trigger user's default email client
+    window.location.href = `mailto:mjdhealthcare@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+
+    // Switch to confirmation view with Gmail web, Mail app, and WhatsApp options
     setSubmitted(true);
   };
 
+  
   return (
     <div className="w-full bg-[#F8FAFC]">
       
@@ -138,7 +157,7 @@ export default function ContactPage({ onNavigateHome }) {
                     <span>CONTACT</span>
                   </div>
                   <div className="text-xs sm:text-sm font-extrabold text-[#007BFF]">
-                    <a href="tel:+919794631500" className="hover:underline">+91 97946 31500</a>
+                    <a href="tel:+919565822229" className="hover:underline">+91 95658 22229</a>
                   </div>
                 </div>
 
@@ -149,7 +168,7 @@ export default function ContactPage({ onNavigateHome }) {
                     <span>MAIL US</span>
                   </div>
                   <div className="text-xs sm:text-sm font-extrabold text-[#007BFF] truncate">
-                    <a href="mailto:INFO@MJDHEALTHCARE.IN" className="hover:underline">INFO@MJDHEALTHCARE.IN</a>
+                    <a href="mailto:mjdhealthcare@gmail.com" className="hover:underline">mjdhealthcare@gmail.com</a>
                   </div>
                 </div>
 
@@ -219,18 +238,52 @@ export default function ContactPage({ onNavigateHome }) {
                 </div>
 
                 {submitted ? (
-                  <div className="bg-white border-2 border-[#10B981]/40 rounded-2xl p-6 text-center space-y-3">
-                    <span className="material-symbols-outlined text-[48px] text-[#10B981]">check_circle</span>
-                    <h4 className="text-lg font-black text-[#16324F]">Thank You for Reaching Out!</h4>
-                    <p className="text-xs font-medium text-[#64748B]">
-                      Your message has been dispatched to MJD Healthcare Advisory Team. We will respond within 24 business hours.
-                    </p>
+                  <div className="bg-white border-2 border-[#10B981]/40 rounded-2xl p-6 sm:p-7 text-center space-y-4 shadow-md">
+                    <div className="w-14 h-14 rounded-full bg-[#10B981]/15 text-[#10B981] flex items-center justify-center mx-auto">
+                      <span className="material-symbols-outlined text-[32px]">mark_email_read</span>
+                    </div>
+                    <div className="space-y-1.5">
+                      <h4 className="text-xl font-black text-[#16324F]">Email Client Triggered!</h4>
+                      <p className="text-xs sm:text-sm font-medium text-[#64748B] max-w-md mx-auto">
+                        Your message has been addressed directly to <span className="font-bold text-[#007BFF]">mjdhealthcare@gmail.com</span>. If your mail client did not open automatically, choose an option below:
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                      <a
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=mjdhealthcare@gmail.com&su=${encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`)}&body=${encodeURIComponent(`Name: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'N/A'}\n\nMessage:\n${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#EA4335] hover:bg-[#d93025] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                      >
+                        <span className="material-symbols-outlined text-[16px]">mail</span>
+                        <span>Send via Gmail Web</span>
+                      </a>
+
+                      <a
+                        href={`mailto:mjdhealthcare@gmail.com?subject=${encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`)}&body=${encodeURIComponent(`Name: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'N/A'}\n\nMessage:\n${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}`)}`}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#16324F] hover:bg-[#007BFF] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                      >
+                        <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                        <span>Open Mail App</span>
+                      </a>
+
+                      <a
+                        href={`https://wa.me/919565822229?text=${encodeURIComponent(`Hello MJD Healthcare,\n\nName: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'Inquiry'}\n\nMessage: ${formData.message || 'I would like to discuss healthcare advisory services.'}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                      >
+                        <span>Send via WhatsApp</span>
+                      </a>
+                    </div>
+
                     <button
                       type="button"
                       onClick={() => { setSubmitted(false); setFormData({ fullname: '', email: '', subject: '', message: '' }); }}
-                      className="text-xs font-bold text-[#007BFF] underline pt-2 cursor-pointer"
+                      className="text-xs font-bold text-[#007BFF] hover:underline pt-3 cursor-pointer block mx-auto"
                     >
-                      Send Another Message
+                      ← Send Another Message
                     </button>
                   </div>
                 ) : (
@@ -259,7 +312,7 @@ export default function ContactPage({ onNavigateHome }) {
                         type="email"
                         name="email"
                         required
-                        placeholder="INFO@MJDHEALTHCARE.IN"
+                        placeholder="yourname@company.com"
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-3.5 bg-white border border-[#CBD5E1] focus:border-[#007BFF] rounded-xl text-sm font-medium text-[#16324F] placeholder-[#94A3B8] focus:outline-none transition-all shadow-sm"
@@ -333,7 +386,7 @@ export default function ContactPage({ onNavigateHome }) {
                 MJD HEALTHCARE HEADQUARTERS
               </div>
               <p className="text-xs font-bold text-[#16324F]">808B DLF PRIME TOWER, POCKET-F, OKHLA PHASE 1, NEW DELHI 110020</p>
-              <p className="text-[11px] text-[#64748B] mt-1">CONTACT: +91 97946 31500 | MAIL: INFO@MJDHEALTHCARE.IN</p>
+              <p className="text-[11px] text-[#64748B] mt-1">CONTACT: +91 95658 22229 | MAIL: mjdhealthcare@gmail.com</p>
               <a 
                 href="https://maps.google.com/?q=808B+DLF+PRIME+TOWER+OKHLA+PHASE+1+NEW+DELHI+110020" 
                 target="_blank" 

@@ -676,14 +676,15 @@ export default function MarketAccessPage({ onNavigateHome }) {
               Talk to MJD Healthcare to structure your hospital and channel access pathways across India.
             </p>
             <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => openModal('Market Access Page Final CTA')}
+              <a
+                href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20structure%20our%20hospital%20and%20channel%20access%20pathways."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-7 py-4 rounded-xl bg-[#0066FF] hover:bg-[#0052cc] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider cursor-pointer inline-flex items-center gap-2 shadow-md transition-colors focus-ring"
               >
                 <span>Talk to MJD Healthcare</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

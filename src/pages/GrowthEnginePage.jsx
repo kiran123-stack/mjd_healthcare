@@ -513,14 +513,13 @@ export default function GrowthEnginePage({ onNavigateHome }) {
               Transition from random marketing activities to a connected commercial growth system.
             </p>
             <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => openModal('Growth Engine Page CTA')}
+              <a
+                href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Growth%20Engine%20Inquiry"
                 className="px-9 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0069d9] text-white text-sm sm:text-base font-bold uppercase tracking-wider cursor-pointer inline-flex items-center gap-3 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5"
               >
                 <span>Talk to MJD Healthcare</span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           </div>
 

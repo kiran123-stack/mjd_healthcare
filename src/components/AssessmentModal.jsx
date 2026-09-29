@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useModal } from '../context/ModalContext';
 
-const WHATSAPP_NUMBER = "919876543210";
+const WHATSAPP_NUMBER = "919565822229";
 
 const servicesList = [
   { id: 'seo', label: 'Healthcare SEO', icon: 'search' },

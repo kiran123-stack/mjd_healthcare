@@ -106,12 +106,24 @@ export default function GTMStrategyPage({ onNavigateHome }) {
 
   const toggleFaq = (idx) => setOpenFaq(openFaq === idx ? null : idx);
 
-  const handleQuickSubmit = (e) => {
+  const handleQuickSubmit = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
-    setTimeout(() => {
-      openModal(`GTM Inquiry from ${contactName || 'Client'}: ${contactMessage}`);
-    }, 400);
+    try {
+      await fetch("https://formsubmit.co/ajax/mjdhealthcare@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          phone: contactPhone,
+          message: contactMessage,
+          _subject: `New GTM Inquiry from ${contactName || 'Client'} - MJD Healthcare`
+        })
+      });
+    } catch (err) {
+      console.warn("GTM inquiry notice:", err);
+    }
   };
 
   // Scroll-Triggered Animation System
@@ -705,19 +717,22 @@ export default function GTMStrategyPage({ onNavigateHome }) {
                   <span className="text-xs text-slate-400 uppercase tracking-wider block">
                     Direct Advisory Line / WhatsApp
                   </span>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#38BDF8] tracking-tight mt-1">
-                    +91 98450 12345
-                  </div>
+                  <a 
+                    href="tel:+919565822229"
+                    className="text-2xl sm:text-3xl font-extrabold text-[#38BDF8] tracking-tight mt-1 hover:underline block"
+                  >
+                    +91 95658 22229
+                  </a>
                 </div>
 
                 <div className="space-y-2 pt-2 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-[#38BDF8]" />
-                    <span>advisory@mjdhealthcare.com</span>
+                    <a href="mailto:mjdhealthcare@gmail.com" className="hover:text-white transition-colors">mjdhealthcare@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-[#38BDF8]" />
-                    <span>Mumbai • New Delhi • Bangalore • Pan-India</span>
+                    <span>808B DLF Prime Tower, Okhla Phase 1, New Delhi</span>
                   </div>
                 </div>
               </div>

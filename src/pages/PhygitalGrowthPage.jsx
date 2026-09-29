@@ -706,14 +706,15 @@ export default function PhygitalGrowthPage({ onNavigateHome }) {
               Connect digital demand with physical market activation today.
             </p>
             <div className="pt-3">
-              <button
-                type="button"
-                onClick={() => openModal('Phygital Page CTA')}
+              <a
+                href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20want%20to%20build%20a%20Phygital%20Healthcare%20Growth%20Engine."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0069d9] text-white text-sm font-bold tracking-wide cursor-pointer inline-flex items-center gap-2.5 shadow-lg shadow-[#007BFF]/30 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <span>Talk to MJD Healthcare</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
 

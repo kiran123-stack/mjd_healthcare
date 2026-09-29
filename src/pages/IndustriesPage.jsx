@@ -947,21 +947,22 @@ export default function IndustriesPage({ onNavigateHome }) {
 
               {/* Contact Information Bar */}
               <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold text-[#38BDF8] pt-2">
-                <span>WhatsApp: +91 9794631500</span>
+                <a href="https://wa.me/919565822229" target="_blank" rel="noopener noreferrer" className="hover:underline">WhatsApp: +91 95658 22229</a>
                 <span>•</span>
-                <span>Email: INFO@MJDHEALTHCARE.IN</span>
+                <a href="mailto:mjdhealthcare@gmail.com" className="hover:underline">Email: mjdhealthcare@gmail.com</a>
               </div>
 
               {/* Clean Harmonized Corporate Action Buttons */}
               <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
-                  type="button"
-                  onClick={() => openModal('Industries Page Bottom CTA')}
+                <a
+                  href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20consult%20on%20our%20healthcare%20sector%20strategy."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#007BFF]/25 hover:shadow-xl transition-all duration-200 cursor-pointer"
                 >
                   <span>Talk to MJD Healthcare</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
 
                 <button
                   type="button"

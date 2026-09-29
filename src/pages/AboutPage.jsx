@@ -341,14 +341,15 @@ export default function AboutPage({ onNavigateHome }) {
             <span className="text-[#38BDF8]">We build the commercial pathway that helps healthcare products reach the right market.</span>
           </h2>
           <div className="pt-4">
-            <button
-              type="button"
-              onClick={() => openModal('About Bottom CTA')}
+            <a
+              href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20consult%20with%20your%20team."
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-9 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0069d9] text-white text-sm sm:text-base font-bold uppercase tracking-wider cursor-pointer inline-flex items-center gap-3 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5"
             >
               <span>Talk to MJD Healthcare</span>
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

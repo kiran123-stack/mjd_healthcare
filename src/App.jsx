@@ -290,13 +290,12 @@ function MainContent() {
                 <SectionLabel>Case In Point</SectionLabel>
                 <BigH2>Healthcare Growth, <span className="text-[#007BFF]">Demonstrated Through Execution.</span></BigH2>
               </div>
-              <button 
-                type="button"
-                onClick={() => openModal('Case Study Full Dossier Request')}
-                style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',background:'none',border:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
+              <a 
+                href="mailto:mjdhealthcare@gmail.com?subject=Request%20Full%20Case%20Study%20Dossier"
+                style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',textDecoration:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
               >
                 Request Full Case Studies <span className="material-symbols-outlined" style={{fontSize:16}}>arrow_forward</span>
-              </button>
+              </a>
             </div>
             <div style={{background:'#FFFFFF',border:'2px solid #E0F2FE',borderRadius:20,overflow:'hidden',boxShadow:'0 4px 24px rgba(22,50,79,0.07)'}}>
               <div style={{position:'relative',height:300}}>
@@ -355,13 +354,12 @@ function MainContent() {
                 <BigH2>Healthcare Growth <span className="text-[#007BFF]">Insights.</span></BigH2>
                 <p style={{fontWeight:500,color:'#64748B',fontSize:'1.1rem',lineHeight:1.7}}>Authoritative analysis on healthcare market access, procurement shifts, and commercialization mechanics.</p>
               </div>
-              <button 
-                type="button"
-                onClick={() => openModal('Explore All Healthcare Insights')}
-                style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',background:'none',border:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
+              <a 
+                href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Growth%20Insights%20Access"
+                style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',textDecoration:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
               >
                 Explore All Insights <span className="material-symbols-outlined" style={{fontSize:16}}>arrow_forward</span>
-              </button>
+              </a>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[

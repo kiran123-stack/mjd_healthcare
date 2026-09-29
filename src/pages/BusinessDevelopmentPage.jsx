@@ -611,14 +611,15 @@ export default function BusinessDevelopmentPage({ onNavigateHome }) {
                 Develop strategic hospital and institutional relationships across India.
               </p>
               <div className="pt-4">
-                <button
-                  type="button"
-                  onClick={() => openModal('BD Page CTA')}
+                <a
+                  href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20develop%20strategic%20hospital%20and%20institutional%20relationships."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-9 py-5 rounded-xl bg-[#007BFF] hover:bg-[#0056b3] text-white text-sm font-extrabold uppercase tracking-wider cursor-pointer inline-flex items-center gap-3 shadow-xl shadow-[#007BFF]/40 hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   <span>Talk to MJD Healthcare</span>
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

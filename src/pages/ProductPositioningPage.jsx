@@ -730,14 +730,13 @@ export default function ProductPositioningPage({ onNavigateHome }) {
               </p>
 
               <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
-                  type="button"
-                  onClick={() => openModal('Positioning Page CTA')}
+                <a
+                  href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Product%20Positioning%20Inquiry"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#007BFF]/25 hover:shadow-xl transition-all duration-200 cursor-pointer"
                 >
                   <span>Talk to MJD Healthcare</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

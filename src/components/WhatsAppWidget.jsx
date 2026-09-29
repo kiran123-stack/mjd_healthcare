@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WHATSAPP_NUMBER = "919876543210"; // Configurable WhatsApp business number
+const WHATSAPP_NUMBER = "919565822229"; // Configurable WhatsApp business number
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);

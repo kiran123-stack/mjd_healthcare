@@ -47,6 +47,7 @@ const nodes = [
 ];
 
 export default function Hero() {
+  const { openModal } = useModal();
   return (
     <section className="relative w-full overflow-hidden bg-white border-b border-[#E0F2FE] flex flex-col justify-between">
       {/* Background City Skyline Image */}
@@ -95,14 +96,13 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
-              <button
-                type="button"
-                onClick={() => openModal('Hero Section — Market Opportunity Assessment')}
+              <a
+                href="tel:+919565822229"
                 className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white text-[11px] sm:text-[12px] md:text-[13px] font-extrabold uppercase tracking-wider shadow-md shadow-[#007BFF]/30 hover:shadow-lg transition-all duration-200 text-center cursor-pointer"
               >
                 <span>GET YOUR MARKET OPPORTUNITY ASSESSMENT</span>
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_forward</span>
-              </button>
+              </a>
 
               <a
                 href="#approach"

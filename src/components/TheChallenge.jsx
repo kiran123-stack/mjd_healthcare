@@ -157,14 +157,15 @@ export default function TheChallenge() {
             <div className="w-10 h-0.5 bg-[#CBD5E1] rounded-full mx-auto my-3" />
 
             <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => openModal('The Challenge — Growth Gap Identification')}
+              <a
+                href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20identify%20our%20commercial%20growth%20gap."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md shadow-[#007BFF]/25 hover:shadow-lg transition-all duration-200 cursor-pointer"
               >
                 <span>IDENTIFY MY GROWTH GAP</span>
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_forward</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>

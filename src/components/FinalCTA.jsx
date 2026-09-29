@@ -88,7 +88,7 @@ _Submitted via MJD Healthcare Consultation Portal_
     `.trim();
 
     const whatsappUrl =
-      `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      `https://wa.me/919565822229?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, "_blank");
   };

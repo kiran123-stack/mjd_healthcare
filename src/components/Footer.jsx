@@ -33,8 +33,8 @@ export default function Footer({ onNavigate }) {
             {/* Exact User Provided Contact Info */}
             <div className="space-y-1.5 pt-2 text-xs font-semibold text-white/80 border-t border-white/10">
               <p><span className="text-[#38BDF8] font-bold">ADDRESS:</span> 808B DLF PRIME TOWER, POCKET-F, OKHLA PHASE 1, NEW DELHI 110020</p>
-              <p><span className="text-[#38BDF8] font-bold">CONTACT:</span> <a href="tel:+919794631500" className="hover:text-[#38BDF8] transition-colors">+91 97946 31500</a></p>
-              <p><span className="text-[#38BDF8] font-bold">MAIL US:</span> <a href="mailto:INFO@MJDHEALTHCARE.IN" className="hover:text-[#38BDF8] transition-colors">INFO@MJDHEALTHCARE.IN</a></p>
+              <p><span className="text-[#38BDF8] font-bold">CONTACT:</span> <a href="tel:+919565822229" className="hover:text-[#38BDF8] transition-colors">+91 95658 22229</a></p>
+              <p><span className="text-[#38BDF8] font-bold">MAIL US:</span> <a href="mailto:mjdhealthcare@gmail.com" className="hover:text-[#38BDF8] transition-colors">mjdhealthcare@gmail.com</a></p>
             </div>
 
             {/* Social Network Section — Exact Links & Icons as used in ContactPage */}
