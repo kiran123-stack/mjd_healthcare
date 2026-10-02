@@ -116,7 +116,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Upward Trajectory Arc with 5 Circular Nodes */}
-          <div className="lg:col-span-6 w-full mt-4 lg:mt-0 flex justify-center items-center overflow-hidden">
+          <div className="lg:col-span-6 w-full mt-4 lg:mt-0 flex justify-center items-center">
             <div className="w-full max-w-[560px] aspect-[560/420] relative">
               
               {/* SVG Glowing Arc Line */}
