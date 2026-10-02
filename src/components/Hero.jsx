@@ -64,7 +64,7 @@ export default function Hero() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 sm:pt-14 lg:pt-20 pb-10 sm:pb-14 lg:pb-16 w-full flex-grow flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-6 sm:pt-10 lg:pt-12 xl:pt-16 pb-8 sm:pb-10 lg:pb-12 xl:pb-14 w-full flex-grow flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
           
           {/* Left Column: Copy & Actions */}

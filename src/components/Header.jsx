@@ -65,7 +65,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
           : 'bg-white/90 backdrop-blur-sm'
       } border-b border-[#E0F2FE]/80`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 h-20 flex items-center justify-between gap-3 xl:gap-6">
         
         {/* Logo */}
         <a 
@@ -81,7 +81,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 2xl:gap-7 shrink-0">
           {navItems.map(({ label, page, anchor, hasDropdown }) => {
             const isActive = 
               (page === 'contact' && currentPage === 'contact') ||
@@ -101,7 +101,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                   <a
                     href="#services"
                     onClick={(e) => handleNavClick(e, 'services', null)}
-                    className={`text-[14px] font-semibold transition-colors flex items-center gap-1 cursor-pointer py-1 ${
+                    className={`text-[13px] xl:text-[14px] font-semibold transition-colors flex items-center gap-1 cursor-pointer py-1 whitespace-nowrap ${
                       isActive ? 'text-[#007BFF] font-black' : 'text-[#16324F]/80 hover:text-[#007BFF]'
                     }`}
                   >
@@ -169,7 +169,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 key={label}
                 href={page === 'contact' ? '#contact' : page === 'about' ? '#about' : (anchor || '#')}
                 onClick={(e) => handleNavClick(e, page, anchor)}
-                className={`text-[14px] font-semibold transition-colors relative py-1 cursor-pointer ${
+                className={`text-[13px] xl:text-[14px] font-semibold transition-colors relative py-1 cursor-pointer whitespace-nowrap ${
                   isActive
                     ? 'text-[#007BFF] font-black'
                     : 'text-[#16324F]/80 hover:text-[#007BFF]'
@@ -185,10 +185,10 @@ export default function Header({ currentPage = 'home', onNavigate }) {
         </nav>
 
         {/* Right CTA Button */}
-        <div className="hidden sm:flex items-center">
+        <div className="hidden sm:flex items-center shrink-0">
           <a
             href="tel:+919794631500"
-            className="inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-wider px-6 py-3 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white shadow-md shadow-[#007BFF]/25 hover:shadow-lg hover:shadow-[#007BFF]/35 transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center gap-2 text-[11px] xl:text-[12px] font-extrabold uppercase tracking-wider px-4 xl:px-6 py-2.5 xl:py-3 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white shadow-md shadow-[#007BFF]/25 hover:shadow-lg hover:shadow-[#007BFF]/35 transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
             <span>TALK TO MJD</span>
             <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
