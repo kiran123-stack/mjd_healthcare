@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useModal } from '../context/ModalContext';
+import { sendEmailInquiry } from '../services/emailService';
 
 const heroBgImage = "https://res.cloudinary.com/q1rn5v9m/image/upload/v1789720904/ChatGPT_Image_Sep_18_2026_01_39_45_AM.png";
 
@@ -36,6 +37,7 @@ export default function ContactPage({ onNavigateHome }) {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -46,27 +48,20 @@ export default function ContactPage({ onNavigateHome }) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.fullname || !formData.email) return;
 
-    const emailSubject = encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`);
-    const emailBody = encodeURIComponent(
-`Full Name: ${formData.fullname}
-Email: ${formData.email}
-Subject: ${formData.subject || 'N/A'}
-
-Message:
-${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}
-
----
-Sent via MJD Healthcare Contact Portal`
-    );
-
-    // Trigger user's default email client
-    window.location.href = `mailto:mjdhealthcare@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-
-    // Switch to confirmation view with Gmail web, Mail app, and WhatsApp options
+    setIsSubmitting(true);
+    await sendEmailInquiry({
+      name: formData.fullname,
+      email: formData.email,
+      subject: formData.subject ? `[MJD Healthcare Contact] ${formData.subject}` : `[MJD Healthcare Contact] Inquiry from ${formData.fullname}`,
+      message: formData.message,
+      formType: 'contact',
+      recipient: 'info@mjdhealthcare.in'
+    });
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -157,7 +152,7 @@ Sent via MJD Healthcare Contact Portal`
                     <span>CONTACT</span>
                   </div>
                   <div className="text-xs sm:text-sm font-extrabold text-[#007BFF]">
-                    <a href="tel:+919565822229" className="hover:underline">+91 95658 22229</a>
+                    <a href="tel:+919794631500" className="hover:underline">+91 97946 31500</a>
                   </div>
                 </div>
 
@@ -168,7 +163,7 @@ Sent via MJD Healthcare Contact Portal`
                     <span>MAIL US</span>
                   </div>
                   <div className="text-xs sm:text-sm font-extrabold text-[#007BFF] truncate">
-                    <a href="mailto:mjdhealthcare@gmail.com" className="hover:underline">mjdhealthcare@gmail.com</a>
+                    <a href="mailto:info@mjdhealthcare.in" className="hover:underline">info@mjdhealthcare.in</a>
                   </div>
                 </div>
 
@@ -238,53 +233,26 @@ Sent via MJD Healthcare Contact Portal`
                 </div>
 
                 {submitted ? (
-                  <div className="bg-white border-2 border-[#10B981]/40 rounded-2xl p-6 sm:p-7 text-center space-y-4 shadow-md">
-                    <div className="w-14 h-14 rounded-full bg-[#10B981]/15 text-[#10B981] flex items-center justify-center mx-auto">
-                      <span className="material-symbols-outlined text-[32px]">mark_email_read</span>
+                  <div className="bg-white border-2 border-[#10B981]/40 rounded-2xl p-8 sm:p-10 text-center space-y-4 shadow-md">
+                    <div className="w-16 h-16 rounded-full bg-[#10B981]/15 text-[#10B981] flex items-center justify-center mx-auto">
+                      <span className="material-symbols-outlined text-[36px]">check_circle</span>
                     </div>
-                    <div className="space-y-1.5">
-                      <h4 className="text-xl font-black text-[#16324F]">Email Client Triggered!</h4>
+                    <div className="space-y-2">
+                      <h4 className="text-2xl font-black text-[#16324F]">Inquiry Submitted Successfully!</h4>
                       <p className="text-xs sm:text-sm font-medium text-[#64748B] max-w-md mx-auto">
-                        Your message has been addressed directly to <span className="font-bold text-[#007BFF]">mjdhealthcare@gmail.com</span>. If your mail client did not open automatically, choose an option below:
+                        Thank you for contacting MJD Healthcare. Your message has been delivered directly to <span className="font-bold text-[#007BFF]">info@mjdhealthcare.in</span>. Our senior healthcare advisory team will review and respond within 24 hours.
                       </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                      <a
-                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=mjdhealthcare@gmail.com&su=${encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`)}&body=${encodeURIComponent(`Name: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'N/A'}\n\nMessage:\n${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#EA4335] hover:bg-[#d93025] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={() => { setSubmitted(false); setFormData({ fullname: '', email: '', subject: '', message: '' }); }}
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
                       >
-                        <span className="material-symbols-outlined text-[16px]">mail</span>
-                        <span>Send via Gmail Web</span>
-                      </a>
-
-                      <a
-                        href={`mailto:mjdhealthcare@gmail.com?subject=${encodeURIComponent(formData.subject ? `[MJD Healthcare] ${formData.subject}` : `[MJD Healthcare] Inquiry from ${formData.fullname}`)}&body=${encodeURIComponent(`Name: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'N/A'}\n\nMessage:\n${formData.message || 'I would like to inquire about MJD Healthcare consulting services.'}`)}`}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#16324F] hover:bg-[#007BFF] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
-                      >
-                        <span className="material-symbols-outlined text-[16px]">open_in_new</span>
-                        <span>Open Mail App</span>
-                      </a>
-
-                      <a
-                        href={`https://wa.me/919565822229?text=${encodeURIComponent(`Hello MJD Healthcare,\n\nName: ${formData.fullname}\nEmail: ${formData.email}\nSubject: ${formData.subject || 'Inquiry'}\n\nMessage: ${formData.message || 'I would like to discuss healthcare advisory services.'}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer"
-                      >
-                        <span>Send via WhatsApp</span>
-                      </a>
+                        ← Send Another Message
+                      </button>
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={() => { setSubmitted(false); setFormData({ fullname: '', email: '', subject: '', message: '' }); }}
-                      className="text-xs font-bold text-[#007BFF] hover:underline pt-3 cursor-pointer block mx-auto"
-                    >
-                      ← Send Another Message
-                    </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 text-left">
@@ -349,10 +317,13 @@ Sent via MJD Healthcare Contact Portal`
 
                     <button
                       type="submit"
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#16324F] hover:bg-[#007BFF] text-white text-xs font-extrabold uppercase tracking-wider transition-all duration-200 shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2"
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#16324F] hover:bg-[#007BFF] disabled:opacity-60 text-white text-xs font-extrabold uppercase tracking-wider transition-all duration-200 shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2"
                     >
-                      <span>Send Message</span>
-                      <span className="material-symbols-outlined text-[16px]">send</span>
+                      <span>{isSubmitting ? 'Sending Message...' : 'Send Message'}</span>
+                      <span className="material-symbols-outlined text-[16px]">
+                        {isSubmitting ? 'hourglass_top' : 'send'}
+                      </span>
                     </button>
 
                   </form>
@@ -386,7 +357,7 @@ Sent via MJD Healthcare Contact Portal`
                 MJD HEALTHCARE HEADQUARTERS
               </div>
               <p className="text-xs font-bold text-[#16324F]">808B DLF PRIME TOWER, POCKET-F, OKHLA PHASE 1, NEW DELHI 110020</p>
-              <p className="text-[11px] text-[#64748B] mt-1">CONTACT: +91 95658 22229 | MAIL: mjdhealthcare@gmail.com</p>
+              <p className="text-[11px] text-[#64748B] mt-1">CONTACT: +91 97946 31500 | MAIL: info@mjdhealthcare.in</p>
               <a 
                 href="https://maps.google.com/?q=808B+DLF+PRIME+TOWER+OKHLA+PHASE+1+NEW+DELHI+110020" 
                 target="_blank" 

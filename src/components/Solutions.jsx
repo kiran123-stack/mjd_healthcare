@@ -70,7 +70,7 @@ export default function Solutions() {
             
             {/* Card 01 - MARKET STRATEGY */}
             <div 
-              onClick={() => { window.location.href = "mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Market%20Strategy%20Inquiry"; }}
+              onClick={() => { window.location.href = "mailto:mjdhealthtech@gmail.com?subject=Healthcare%20Market%20Strategy%20Inquiry"; }}
               className="group relative rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_12px_35px_rgba(56,189,248,0.12)] hover:shadow-[0_20px_45px_rgba(0,123,255,0.22)] hover:border-[#007BFF] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               {/* Card Ambient Glow on Hover */}
@@ -265,7 +265,7 @@ export default function Solutions() {
 
               {/* Card 04 - SALES & MARKET DEVELOPMENT */}
               <div 
-                onClick={() => { window.location.href = "mailto:mjdhealthcare@gmail.com?subject=Institutional%20Sales%20and%20Market%20Development%20Inquiry"; }}
+                onClick={() => { window.location.href = "mailto:mjdhealthtech@gmail.com?subject=Institutional%20Sales%20and%20Market%20Development%20Inquiry"; }}
                 className="group relative rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_12px_35px_rgba(56,189,248,0.12)] hover:shadow-[0_20px_45px_rgba(0,123,255,0.22)] hover:border-[#007BFF] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >
                 <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#007BFF]/20 to-[#38BDF8]/20 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300 pointer-events-none" />

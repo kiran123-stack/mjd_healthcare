@@ -694,9 +694,7 @@ export default function SalesEnablementPage({ onNavigateHome }) {
               </p>
               <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20build%20a%20sales%20enablement%20framework."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+919794631500"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#007BFF]/25 hover:shadow-xl transition-all duration-200 cursor-pointer"
                 >
                   <span>Talk to MJD Healthcare</span>

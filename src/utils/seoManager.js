@@ -162,7 +162,7 @@ const PAGE_META = {
   contact: {
     title: 'Contact MJD Healthcare — New Delhi Healthcare Growth Consulting | MJD Healthcare',
     description:
-      'Contact MJD Healthcare, India\'s specialist healthcare commercialization advisory based at DLF Prime Tower, New Delhi. Reach us on WhatsApp +91 97946 31500 or email INFO@MJDHEALTHCARE.IN to schedule a healthcare growth consultation.',
+      'Contact MJD Healthcare, India\'s specialist healthcare commercialization advisory based at DLF Prime Tower, New Delhi. Reach us on WhatsApp +91 95658 22229, Call +91 97946 31500 or email info@mjdhealthcare.in to schedule a healthcare growth consultation.',
     keywords:
       'contact MJD Healthcare, MJD Healthcare New Delhi, healthcare consultant contact India, medical device consulting contact, DLF Prime Tower healthcare consulting',
     canonical: `${SITE_URL}/#contact`,

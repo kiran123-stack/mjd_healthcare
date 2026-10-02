@@ -186,14 +186,13 @@ export default function Header({ currentPage = 'home', onNavigate }) {
 
         {/* Right CTA Button */}
         <div className="hidden sm:flex items-center">
-          <button
-            type="button"
-            onClick={() => openModal('Header CTA — Rapid Commercial Assessment')}
+          <a
+            href="tel:+919794631500"
             className="inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-wider px-6 py-3 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white shadow-md shadow-[#007BFF]/25 hover:shadow-lg hover:shadow-[#007BFF]/35 transition-all duration-200 cursor-pointer"
           >
             <span>TALK TO MJD</span>
             <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </button>
+          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -272,17 +271,14 @@ export default function Header({ currentPage = 'home', onNavigate }) {
             );
           })}
 
-          <button
-            type="button"
-            onClick={() => {
-              setMobileOpen(false);
-              openModal('Mobile Header CTA — Talk to MJD');
-            }}
+          <a
+            href="tel:+919794631500"
+            onClick={() => setMobileOpen(false)}
             className="w-full flex items-center justify-center gap-2 text-xs font-extrabold uppercase tracking-wider px-5 py-3.5 rounded-lg bg-[#007BFF] text-white shadow-md mt-4 cursor-pointer"
           >
             TALK TO MJD HEALTHCARE
             <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </button>
+          </a>
         </div>
       )}
     </header>

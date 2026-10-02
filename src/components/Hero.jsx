@@ -96,13 +96,14 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
-              <a
-                href="tel:+919565822229"
+              <button
+                type="button"
+                onClick={() => openModal('Healthcare Market Opportunity Assessment')}
                 className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg bg-[#007BFF] hover:bg-[#0066d6] text-white text-[11px] sm:text-[12px] md:text-[13px] font-extrabold uppercase tracking-wider shadow-md shadow-[#007BFF]/30 hover:shadow-lg transition-all duration-200 text-center cursor-pointer"
               >
                 <span>GET YOUR MARKET OPPORTUNITY ASSESSMENT</span>
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_forward</span>
-              </a>
+              </button>
 
               <a
                 href="#approach"
@@ -115,7 +116,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Upward Trajectory Arc with 5 Circular Nodes */}
-          <div className="lg:col-span-6 w-full mt-4 lg:mt-0 flex justify-center items-center">
+          <div className="lg:col-span-6 w-full mt-4 lg:mt-0 flex justify-center items-center overflow-hidden">
             <div className="w-full max-w-[560px] aspect-[560/420] relative">
               
               {/* SVG Glowing Arc Line */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useModal } from '../context/ModalContext';
+import { sendEmailInquiry } from '../services/emailService';
 import {
   Compass,
   ArrowRight,
@@ -102,28 +103,27 @@ export default function GTMStrategyPage({ onNavigateHome }) {
   const [contactPhone, setContactPhone] = useState('');
   const [contactMessage, setContactMessage] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const pageContainerRef = useRef(null);
 
   const toggleFaq = (idx) => setOpenFaq(openFaq === idx ? null : idx);
 
   const handleQuickSubmit = async (e) => {
     e.preventDefault();
+    if (!contactName || !contactEmail) return;
+
+    setIsSubmitting(true);
+    await sendEmailInquiry({
+      name: contactName,
+      email: contactEmail,
+      phone: contactPhone,
+      subject: `[MJD Healthcare] New GTM Strategy Inquiry from ${contactName}`,
+      message: contactMessage,
+      formType: 'gtm-strategy',
+      recipient: 'mjdhealthtech@gmail.com'
+    });
+    setIsSubmitting(false);
     setFormSubmitted(true);
-    try {
-      await fetch("https://formsubmit.co/ajax/mjdhealthcare@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          name: contactName,
-          email: contactEmail,
-          phone: contactPhone,
-          message: contactMessage,
-          _subject: `New GTM Inquiry from ${contactName || 'Client'} - MJD Healthcare`
-        })
-      });
-    } catch (err) {
-      console.warn("GTM inquiry notice:", err);
-    }
   };
 
   // Scroll-Triggered Animation System
@@ -626,8 +626,8 @@ export default function GTMStrategyPage({ onNavigateHome }) {
               {formSubmitted ? (
                 <div className="p-6 rounded-sm bg-[#0066FF]/20 border border-[#0066FF] text-center space-y-2">
                   <CheckCircle2 className="w-8 h-8 text-[#38BDF8] mx-auto" />
-                  <div className="text-base font-bold text-white">Inquiry Received</div>
-                  <p className="text-xs text-slate-200">Our Healthcare Commercial Practice will contact you shortly.</p>
+                  <div className="text-base font-bold text-white">Inquiry Submitted Successfully</div>
+                  <p className="text-xs text-slate-200">Our Healthcare Commercial Practice will review your requirements and connect with you shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleQuickSubmit} className="space-y-4">
@@ -688,9 +688,10 @@ export default function GTMStrategyPage({ onNavigateHome }) {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-sm bg-[#0066FF] hover:bg-[#0052cc] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-sm bg-[#0066FF] hover:bg-[#0052cc] disabled:opacity-60 text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <span>ENVIAR / SUBMIT GTM INQUIRY</span>
+                    <span>{isSubmitting ? 'Submitting...' : 'SUBMIT GTM INQUIRY'}</span>
                     <Send className="w-4 h-4" />
                   </button>
                 </form>
@@ -715,20 +716,20 @@ export default function GTMStrategyPage({ onNavigateHome }) {
               <div className="pt-4 space-y-4 border-t border-white/15">
                 <div>
                   <span className="text-xs text-slate-400 uppercase tracking-wider block">
-                    Direct Advisory Line / WhatsApp
+                    Direct Advisory Line / Call
                   </span>
                   <a 
-                    href="tel:+919565822229"
+                    href="tel:+919794631500"
                     className="text-2xl sm:text-3xl font-extrabold text-[#38BDF8] tracking-tight mt-1 hover:underline block"
                   >
-                    +91 95658 22229
+                    +91 97946 31500
                   </a>
                 </div>
 
                 <div className="space-y-2 pt-2 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-[#38BDF8]" />
-                    <a href="mailto:mjdhealthcare@gmail.com" className="hover:text-white transition-colors">mjdhealthcare@gmail.com</a>
+                    <a href="mailto:mjdhealthtech@gmail.com" className="hover:text-white transition-colors">mjdhealthtech@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-[#38BDF8]" />

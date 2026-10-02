@@ -7,15 +7,29 @@
   
   html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
     background-color: #F8FAFC;
     color: #16324F;
     font-family: 'Manrope', sans-serif;
     -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
   }
 }
 

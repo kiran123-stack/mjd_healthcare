@@ -70,14 +70,13 @@ export default function ServicesHero() {
               <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
             </a>
 
-            <button
-              type="button"
-              onClick={() => openModal('Services Hero — Talk to MJD Healthcare')}
+            <a
+              href="tel:+919794631500"
               className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs sm:text-[13px] font-extrabold uppercase tracking-wider backdrop-blur-md transition-all duration-200 shadow-sm text-center cursor-pointer"
             >
               <span>Talk to MJD Healthcare</span>
               <span className="material-symbols-outlined text-[18px] text-[#38BDF8]">arrow_forward</span>
-            </button>
+            </a>
           </div>
 
           {/* Bottom Commercial Pathway Strip */}

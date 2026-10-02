@@ -188,7 +188,7 @@ export default function BusinessDevelopmentPage({ onNavigateHome }) {
               </div>
 
               {/* Floating Glassmorphic Pill 1 (Top Left) */}
-              <div className="absolute -top-6 -left-4 sm:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#E0F2FE] flex items-center gap-3 animate-float max-w-xs">
+              <div className="absolute -top-6 left-2 sm:-left-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#E0F2FE] flex items-center gap-3 animate-float max-w-xs">
                 <div className="w-10 h-10 rounded-xl bg-[#E0F2FE] text-[#007BFF] flex items-center justify-center shrink-0">
                   <Target className="w-5 h-5" />
                 </div>
@@ -199,7 +199,7 @@ export default function BusinessDevelopmentPage({ onNavigateHome }) {
               </div>
 
               {/* Floating Glassmorphic Pill 2 (Bottom Right) */}
-              <div className="absolute -bottom-6 -right-2 sm:-right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#E0F2FE] flex items-center gap-3 animate-float-alt max-w-xs">
+              <div className="absolute -bottom-6 right-2 sm:-right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#E0F2FE] flex items-center gap-3 animate-float-alt max-w-xs">
                 <div className="w-10 h-10 rounded-xl bg-[#007BFF] text-white flex items-center justify-center shrink-0">
                   <TrendingUp className="w-5 h-5" />
                 </div>
@@ -612,9 +612,7 @@ export default function BusinessDevelopmentPage({ onNavigateHome }) {
               </p>
               <div className="pt-4">
                 <a
-                  href="https://wa.me/919565822229?text=Hello%20MJD%20Healthcare%2C%20I%20would%20like%20to%20develop%20strategic%20hospital%20and%20institutional%20relationships."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+919794631500"
                   className="px-9 py-5 rounded-xl bg-[#007BFF] hover:bg-[#0056b3] text-white text-sm font-extrabold uppercase tracking-wider cursor-pointer inline-flex items-center gap-3 shadow-xl shadow-[#007BFF]/40 hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   <span>Talk to MJD Healthcare</span>

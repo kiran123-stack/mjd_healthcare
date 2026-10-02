@@ -35,7 +35,7 @@ export default function ServicesCTA() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <a
-            href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Growth%20Strategy%20Inquiry"
+            href="tel:+919794631500"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#007BFF] hover:bg-[#0066d6] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#007BFF]/25 hover:shadow-xl transition-all duration-200 cursor-pointer"
           >
             <span>Talk to MJD Healthcare</span>

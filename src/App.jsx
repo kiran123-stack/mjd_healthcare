@@ -129,7 +129,7 @@ function MainContent() {
   useStructuredData(currentPage);
 
   return (
-    <div style={{fontFamily:'Manrope,sans-serif',background:'#F8FAFC',color:'#16324F',overflowX:'hidden'}}>
+    <div style={{fontFamily:'Manrope,sans-serif',background:'#F8FAFC',color:'#16324F',overflowX:'hidden',width:'100%',maxWidth:'100%'}}>
       {/* Scroll-Driven Dynamic Top Reading Progress Bar */}
       <div 
         id="scroll-progress-bar"
@@ -252,36 +252,6 @@ function MainContent() {
           </div>
         </section>
 
-        {/* ── SECTION 10 TRACK RECORD ── */}
-        <section id="track-record" style={{background:'#16324F',borderBottom:'1px solid rgba(255,255,255,0.08)',padding:'6rem 0'}}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-            <div style={{textAlign:'center',marginBottom:'3.5rem'}}>
-              <SectionLabel centered>Track Record</SectionLabel>
-              <BigH2 light centered>Built on Real Healthcare <span className="text-[#007BFF]">Commercial Experience.</span></BigH2>
-            </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',border:'1px solid rgba(255,255,255,0.08)',borderRadius:20,overflow:'hidden',background:'rgba(255,255,255,0.04)'}}>
-              {[
-                {v:'140+',l:'Healthcare Projects',d:'Delivered across medical devices, diagnostics, and life sciences.'},
-                {v:'650+',l:'Institutions Engaged',d:'Active relationships across tertiary hospitals and health networks.'},
-                {v:'85+',l:'Products Commercialized',d:'Brought from regulatory clearance to multi-center clinical adoption.'},
-                {v:'18+',l:'Years Domain Focus',d:'Average healthcare leadership and market access team tenure.'},
-                {v:'₹420Cr+',l:'Pipeline Influenced',d:'Documented commercial contract value accelerated for clients.'}
-              ].map((stat,i)=>(
-                <div 
-                  key={stat.l} 
-                  onClick={() => openModal(`Track Record Verification: ${stat.l}`)}
-                  style={{padding:'2rem',textAlign:'center',borderLeft:i?'1px solid rgba(255,255,255,0.08)':undefined,cursor:'pointer'}}
-                  className="hover:bg-white/5 transition-colors"
-                >
-                  <div style={{fontWeight:800,fontSize:46,letterSpacing:'-0.03em',lineHeight:1,color:'#38BDF8',marginBottom:8}}>{stat.v}</div>
-                  <div style={{fontWeight:800,fontSize:11,letterSpacing:'0.08em',textTransform:'uppercase',color:'#FFFFFF',marginBottom:6}}>{stat.l}</div>
-                  <p style={{fontWeight:500,fontSize:12,color:'rgba(255,255,255,0.6)',lineHeight:1.5}}>{stat.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── SECTION 11 CASE STUDY ── */}
         <section id="case-studies" style={{background:'#F8FAFC',borderBottom:'1px solid #E0F2FE',padding:'6rem 0'}}>
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -291,7 +261,7 @@ function MainContent() {
                 <BigH2>Healthcare Growth, <span className="text-[#007BFF]">Demonstrated Through Execution.</span></BigH2>
               </div>
               <a 
-                href="mailto:mjdhealthcare@gmail.com?subject=Request%20Full%20Case%20Study%20Dossier"
+                href="mailto:mjdhealthtech@gmail.com?subject=Request%20Full%20Case%20Study%20Dossier"
                 style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',textDecoration:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
               >
                 Request Full Case Studies <span className="material-symbols-outlined" style={{fontSize:16}}>arrow_forward</span>
@@ -355,7 +325,7 @@ function MainContent() {
                 <p style={{fontWeight:500,color:'#64748B',fontSize:'1.1rem',lineHeight:1.7}}>Authoritative analysis on healthcare market access, procurement shifts, and commercialization mechanics.</p>
               </div>
               <a 
-                href="mailto:mjdhealthcare@gmail.com?subject=Healthcare%20Growth%20Insights%20Access"
+                href="mailto:mjdhealthtech@gmail.com?subject=Healthcare%20Growth%20Insights%20Access"
                 style={{fontWeight:800,fontSize:12,letterSpacing:'0.08em',textTransform:'uppercase',color:'#007BFF',textDecoration:'none',display:'inline-flex',alignItems:'center',gap:6,flexShrink:0,cursor:'pointer'}}
               >
                 Explore All Insights <span className="material-symbols-outlined" style={{fontSize:16}}>arrow_forward</span>
